@@ -4,8 +4,9 @@ Explorador interactivo de personajes de **Rick and Morty** desarrollado para la 
 
 ## Integrantes
 
-- Joel Canche Chac
-- Pendiente de completar con los demás integrantes
+- Joel Canche Chac — @joelcanchechac2007-ai
+- Victor Manuel — @victormanuelxd360-afk
+- Santiago de la Mora — @santiagodelamora
 
 ## Enlaces
 
