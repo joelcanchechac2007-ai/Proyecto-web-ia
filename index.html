@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explorador interactivo de personajes de Rick and Morty">
+  <title>Rick Explorer | Explorador de personajes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Rick Explorer, inicio">
+      <span class="brand-mark">R</span>
+      <span>Rick <strong>Explorer</strong></span>
+    </a>
+    <div class="header-actions">
+      <span class="live-badge"><span class="pulse-dot"></span> API en vivo</span>
+      <button class="icon-button" id="themeToggle" type="button" aria-label="Cambiar a modo oscuro" aria-pressed="false">🌙</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section-shell">
+      <div class="hero-copy">
+        <p class="eyebrow">Explorador interactivo</p>
+        <h1>Conoce el multiverso <span>personaje por personaje.</span></h1>
+        <p class="hero-text">Consulta información real de Rick and Morty, encuentra tus personajes favoritos y organiza la búsqueda a tu manera.</p>
+        <a class="primary-button" href="#explorer">Explorar personajes <span>↓</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="planet planet-large"></div>
+        <div class="planet planet-small"></div>
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <span class="star star-one">✦</span>
+        <span class="star star-two">✦</span>
+        <span class="star star-three">·</span>
+        <span class="portal">◎</span>
+      </div>
+    </section>
+
+    <section class="explorer section-shell" id="explorer">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Base de datos</p>
+          <h2>Explora personajes</h2>
+        </div>
+        <p class="section-note">Datos obtenidos desde Rick and Morty API</p>
+      </div>
+
+      <div class="controls-card">
+        <label class="search-field">
+          <span aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="Buscar por nombre..." autocomplete="off">
+        </label>
+        <label class="select-field">
+          <span>Estado</span>
+          <select id="statusFilter">
+            <option value="all">Todos</option>
+            <option value="alive">Vivo</option>
+            <option value="dead">Muerto</option>
+            <option value="unknown">Desconocido</option>
+          </select>
+        </label>
+        <label class="select-field">
+          <span>Especie</span>
+          <select id="speciesFilter">
+            <option value="all">Todas</option>
+          </select>
+        </label>
+        <label class="select-field">
+          <span>Ordenar</span>
+          <select id="sortFilter">
+            <option value="default">Predeterminado</option>
+            <option value="az">Nombre: A-Z</option>
+            <option value="za">Nombre: Z-A</option>
+          </select>
+        </label>
+        <button id="clearFilters" class="secondary-button" type="button">Limpiar filtros</button>
+      </div>
+
+      <div class="stats-row" aria-label="Estadísticas de resultados">
+        <div class="stat-card"><span class="stat-icon">👾</span><div><strong id="visibleCount">0</strong><span>personajes visibles</span></div></div>
+        <div class="stat-card"><span class="stat-icon">⭐</span><div><strong id="favoriteCount">0</strong><span>favoritos guardados</span></div></div>
+        <div class="stat-card"><span class="stat-icon">🌌</span><div><strong id="speciesCount">0</strong><span>especies encontradas</span></div></div>
+      </div>
+
+      <div id="statusMessage" class="status-message" role="status" aria-live="polite"></div>
+      <div id="characterGrid" class="character-grid"></div>
+    </section>
+
+    <section class="favorites-section section-shell" id="favorites">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Tu colección</p>
+          <h2>Personajes favoritos</h2>
+        </div>
+        <span class="favorites-hint">Se guardan en este navegador</span>
+      </div>
+      <div id="favoritesGrid" class="character-grid favorites-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>Rick Explorer</span>
+    <span>Proyecto escolar · HTML, CSS, JavaScript y API pública</span>
+  </footer>
+</body>
+</html>
