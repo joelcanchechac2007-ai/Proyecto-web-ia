@@ -102,6 +102,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .favorite-button:hover { transform: scale(1.08); }
 .favorite-button.is-favorite { color: #e9a92e; }
 .empty-state { grid-column: 1 / -1; padding: 36px 20px; border: 1px dashed var(--line); border-radius: var(--radius-md); color: var(--muted); text-align: center; }
+.history-section { padding: 30px 0 18px; }
+.history-list { display: flex; flex-wrap: wrap; gap: 10px; min-height: 42px; }
+.history-list:empty::after { content: "Tus búsquedas recientes aparecerán aquí."; color: var(--muted); font-size: 0.86rem; }
+.history-chip { display: inline-flex; align-items: center; gap: 8px; padding: 9px 13px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--text); cursor: pointer; font-size: 0.82rem; font-weight: 700; }
+.history-chip:hover { border-color: var(--accent); color: var(--accent-dark); }
 .favorites-section { padding: 42px 0 85px; }
 .favorites-grid { grid-template-columns: repeat(5, 1fr); }
 .favorites-grid:empty::after { content: "Todavía no tienes favoritos. Presiona la estrella en una tarjeta para guardarla."; display: block; grid-column: 1 / -1; padding: 34px; border: 1px dashed var(--line); border-radius: var(--radius-md); color: var(--muted); text-align: center; }
