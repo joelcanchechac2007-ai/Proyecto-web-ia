@@ -22,13 +22,14 @@ Explorador interactivo de personajes de **Rick and Morty** desarrollado para la 
 - Favoritos guardados con localStorage.
 - Mensajes para carga, errores y resultados vacíos.
 - Diseño adaptable a celulares y computadoras.
-- Modo claro y modo oscuro como funcionalidad extra.
+- Modo claro y modo oscuro.
+- Historial de búsquedas recientes guardado con localStorage como modificación extra.
 
 ## Estructura
 
 - index.html: estructura y contenido de la interfaz.
 - style.css: estilos visuales y diseño responsive.
-- script.js: consulta a la API, filtros, favoritos y tema.
+- script.js: consulta a la API, filtros, favoritos, historial y tema.
 - README.md: documentación del proyecto.
 
 ## Uso
@@ -61,6 +62,15 @@ El modo oscuro se controla con el atributo data-theme del elemento html. JavaScr
 
 La inteligencia artificial ayudó a proponer la estructura, explicar funciones y detectar errores. Aun así, el equipo revisó el código, probó la aplicación y realizó cambios para comprender qué hace cada parte. La IA es una herramienta de apoyo, pero todos los integrantes deben poder explicar el uso de fetch(), los filtros, localStorage y GitHub Pages.
 
+## Preguntas para la presentación
+
+1. fetch() solicita los datos a la API y devuelve una promesa que se resuelve con la respuesta.
+2. HTML organiza el contenido, CSS define la presentación visual y JavaScript agrega comportamiento e interacción.
+3. El buscador compara el texto escrito con el nombre de cada personaje y vuelve a renderizar las tarjetas.
+4. Si la API falla, try...catch muestra un mensaje visible para el usuario.
+5. La IA propuso partes de la estructura, pero el equipo revisó, corrigió y explicó el código.
+6. GitHub Pages publicará el contenido de la rama principal como un sitio web.
+
 ## Historial de colaboración
 
-El historial del repositorio se construirá con commits pequeños y descriptivos. También se documentarán problemas mediante Issues y se incorporará una mejora usando Pull Request, como solicita la actividad.
+El historial del repositorio se construirá con commits pequeños y descriptivos. También se documentaron problemas mediante Issues y se incorporó el historial de búsquedas mediante un Pull Request, como solicita la actividad.
