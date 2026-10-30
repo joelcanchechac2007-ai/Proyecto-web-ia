@@ -1,5 +1,6 @@
 const API_URL = "https://rickandmortyapi.com/api/character?page=1";
 const FAVORITES_KEY = "rick-explorer-favorites";
+const HISTORY_KEY = "rick-explorer-search-history";
 const THEME_KEY = "rick-explorer-theme";
 
 const elements = {
@@ -14,11 +15,14 @@ const elements = {
   visibleCount: document.querySelector("#visibleCount"),
   favoriteCount: document.querySelector("#favoriteCount"),
   speciesCount: document.querySelector("#speciesCount"),
-  themeToggle: document.querySelector("#themeToggle")
+  themeToggle: document.querySelector("#themeToggle"),
+  searchHistory: document.querySelector("#searchHistory"),
+  clearHistory: document.querySelector("#clearHistory")
 };
 
 let characters = [];
 let favorites = readFavorites();
+let searchHistory = readSearchHistory();
 
 function readFavorites() {
   try {
@@ -30,6 +34,28 @@ function readFavorites() {
 
 function saveFavorites() {
   localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+}
+
+function readSearchHistory() {
+  try {
+    return JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveSearchHistory() {
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(searchHistory));
+}
+
+function addSearchHistory(query) {
+  const cleanQuery = query.trim();
+  if (cleanQuery.length < 2) return;
+  searchHistory = [cleanQuery].concat(searchHistory.filter(function (item) {
+    return item.toLowerCase() !== cleanQuery.toLowerCase();
+  })).slice(0, 6);
+  saveSearchHistory();
+  renderSearchHistory();
 }
 
 function setMessage(message, type) {
@@ -116,6 +142,12 @@ function populateSpecies() {
     }).join("");
 }
 
+function renderSearchHistory() {
+  elements.searchHistory.innerHTML = searchHistory.map(function (query) {
+    return '<button class="history-chip" type="button" data-history="' + escapeHTML(query) + '">⌕ ' + escapeHTML(query) + '</button>';
+  }).join("");
+}
+
 function renderFavorites() {
   renderCards(favorites, elements.favoritesGrid, "Todavía no tienes favoritos. Presiona la estrella en una tarjeta para guardarla.");
   elements.favoriteCount.textContent = favorites.length;
@@ -171,6 +203,11 @@ function setTheme(theme) {
 }
 
 elements.searchInput.addEventListener("input", applyFilters);
+elements.searchInput.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    addSearchHistory(elements.searchInput.value);
+  }
+});
 elements.statusFilter.addEventListener("change", applyFilters);
 elements.speciesFilter.addEventListener("change", applyFilters);
 elements.sortFilter.addEventListener("change", applyFilters);
@@ -188,6 +225,17 @@ document.addEventListener("click", function (event) {
   if (button) {
     toggleFavorite(Number(button.dataset.id));
   }
+  const historyButton = event.target.closest(".history-chip");
+  if (historyButton) {
+    elements.searchInput.value = historyButton.dataset.history;
+    applyFilters();
+  }
+});
+
+elements.clearHistory.addEventListener("click", function () {
+  searchHistory = [];
+  saveSearchHistory();
+  renderSearchHistory();
 });
 
 elements.themeToggle.addEventListener("click", function () {
@@ -196,4 +244,5 @@ elements.themeToggle.addEventListener("click", function () {
 });
 
 setTheme(localStorage.getItem(THEME_KEY) || "light");
+renderSearchHistory();
 loadCharacters();
