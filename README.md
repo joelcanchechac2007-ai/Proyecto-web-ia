@@ -10,7 +10,7 @@ Explorador interactivo de personajes de **Rick and Morty** desarrollado para la 
 ## Enlaces
 
 - Repositorio: https://github.com/joelcanchechac2007-ai/Proyecto-web-ia
-- Aplicación en GitHub Pages: Pendiente de activar
+- Aplicación en GitHub Pages: https://joelcanchechac2007-ai.github.io/Proyecto-web-ia/
 
 ## Funciones principales
 
@@ -44,7 +44,7 @@ Explorador interactivo de personajes de **Rick and Morty** desarrollado para la 
 
 1. “Ayúdame a diseñar una aplicación web escolar que consuma la Rick and Morty API con HTML, CSS y JavaScript, incluyendo buscador, filtros y favoritos”.
 2. “Explícame cómo guardar objetos de personajes en localStorage y cómo volver a mostrarlos al recargar la página”.
-3. “Propón una funcionalidad extra que podamos explicar en clase e intégrala de forma sencilla; elegimos modo claro y oscuro”.
+3. “Propón una funcionalidad extra que podamos explicar en clase e intégrala de forma sencilla; elegimos un historial de búsquedas”.
 
 ## Respuesta de IA que requirió correcciones
 
@@ -56,7 +56,7 @@ Si la API no responde, la aplicación podía quedarse mostrando solamente el men
 
 ## Modificación que podemos explicar
 
-El modo oscuro se controla con el atributo data-theme del elemento html. JavaScript alterna entre light y dark, CSS cambia las variables de color y localStorage conserva la preferencia del usuario.
+El historial se controla con una lista de búsquedas en JavaScript. Al presionar Enter, la búsqueda se agrega a localStorage, se muestra como un botón y puede repetirse con un clic. También se incluyó el modo oscuro como mejora visual adicional.
 
 ## Reflexión sobre el uso de IA
 
